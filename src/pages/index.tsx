@@ -3,16 +3,16 @@ import { api } from '../services/api';
 import { format, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
-import Image  from "next/image"
+import Image from "next/image";
 
- 
+
 import styles from './home.module.scss';
 
 
 type Episode = {
   id: string;
   title: string;
-  thumbnial: string;
+  thumbnail: string;
   members: string;
   duration: number;
   durationAsString: string;
@@ -35,7 +35,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
           {latestEpisodes.map(episode => {
             return (
               <li key={episode.id}>
-                <Image width={192} height={192} src={episode.thumbnail} alt={episode.title} objectFit="cover"/>
+                <Image width={192} height={192} src={episode.thumbnail} alt={episode.title} objectFit="cover" />
 
                 <div className={styles.episodeDetails}>
                   <a href="">{episode.title}</a>
@@ -45,14 +45,29 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                 </div>
 
                 <button type="button">
-                  <img src ="/play-green.svg" alt="Tocar episódio"/>
+                  <img src="/play-green.svg" alt="Tocar episódio" />
                 </button>
               </li>
             )
           })}
         </ul>
       </section>
-      <section className={styles.allEpisodes}></section>
+      <section className={styles.allEpisodes}>
+        <h2> Todos os Episodes </h2>
+        <table cellSpacing={0}>
+          <thead>
+            <th></th>
+            <th>Podcast</th>
+            <th>Integrantes</th>
+            <th>Data</th>
+            <th>Duração</th>
+            <th></th>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </section>
+
     </div >
   )
 }
